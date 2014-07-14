@@ -1,8 +1,9 @@
-extends layout
+head
+  title= appTitle
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  link(rel='icon', href='/images/icon.png')
 
-block link
-  -var selected = 'Home';
-
-block content
+body
+  div(class="sidebar")
   div(class="content")
-    
+    p Hello World
