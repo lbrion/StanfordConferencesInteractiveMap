@@ -27,11 +27,14 @@
           var map = new google.maps.Map($map,
               mapOptions);
 
-          var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Conferences Map'
-          });
+          for (var i = 0; i < 10; i++) {
+            var myLatlng = new google.maps.LatLng(lat + 0.0001 * i, lng + 0.0001 * i);
+            var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map,
+              title: 'Conferences Map'
+            });
+          }
         }
 
         initialize();
