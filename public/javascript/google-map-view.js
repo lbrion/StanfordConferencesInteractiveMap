@@ -2,7 +2,7 @@
   var GoogleMapView = {};
   
   // zoom level for Google Map
-  var DEFAULT_ZOOM = 14;
+  var DEFAULT_ZOOM = 17;
   var STATUS_OK = 200;
 
   /* Renders a map for the given entry into the provided $map element. */
@@ -30,16 +30,15 @@
           var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: 'Yelp Map'
+            title: 'Conferences Map'
           });
-
         }
 
         initialize();
       }
     });
 
-    request.open('GET', 'http://maps.googleapis.com/maps/api/geocode/json?' + 'address=' + 'stanford' + '&sensor=false', true);
+    request.open('GET', 'http://maps.googleapis.com/maps/api/geocode/json?' + 'address=' + 'stanford main quad' + '&sensor=false', true);
 
     request.send();
   };
