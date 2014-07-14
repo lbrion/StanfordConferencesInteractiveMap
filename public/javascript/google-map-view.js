@@ -9,6 +9,12 @@
   GoogleMapView.render = function($map) {
     var request = new XMLHttpRequest();
 
+    function close_all_infowin(arr) {
+      for (var i = 0; i < arr.length; i++)
+        if (arr[i].getContent())
+          arr[i].close();
+    }
+
     request.addEventListener('load', function () {
       if (request.status !== STATUS_OK) {
         $('.error').html(error);
@@ -27,13 +33,41 @@
           var map = new google.maps.Map($map,
               mapOptions);
 
+          var coords = [];
+
           for (var i = 0; i < 10; i++) {
-            var myLatlng = new google.maps.LatLng(lat + 0.0001 * i, lng + 0.0001 * i);
+            coords[i] = new google.maps.LatLng(lat + 0.0001 * i, lng + 0.0001 * i);
+          }
+
+          var markers = Array();
+          var infoWindows = Array();
+
+          for (var i = 0; i < 10; i++) {
+            var myLatlng = coords[i];
             var marker = new google.maps.Marker({
               position: myLatlng,
               map: map,
-              title: 'Conferences Map'
+              title: 'Conferences Map',
+              marker: i
             });
+
+            var content = "<h3>Info Window Number " + (1 + i) + "<h3>" +
+               "<p>Lat: " + coords[i].lat() + " Lng: " + coords[i].lng() + "</p>";
+            var infoWindow = new google.maps.InfoWindow({
+              content: content
+            });
+
+            google.maps.event.addListener(marker, 'click',
+                function (event) {
+                  map.panTo(event.latLng);
+                  close_all_infowin(infoWindows);
+                  infoWindows[this.marker].open(map, this);
+                }
+            );
+
+            infoWindows.push(infoWindow);
+            console.log(infoWindows[i]);
+            markers.push(marker);
           }
         }
 
