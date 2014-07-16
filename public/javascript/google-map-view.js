@@ -62,6 +62,13 @@
         console.log(infoWindows[i]);
         markers.push(marker);
       }
+
+      google.maps.event.addListener(map, 'click', function (event) {
+
+        marker = new google.maps.Marker({ position: event.latLng, map: map });
+        console.log("lat: " + event.latLng.lat());
+        console.log("lng: " + event.latLng.lng());
+      });
     }
 
     initialize();
