@@ -37,6 +37,7 @@
 
     opn_no_chg[6] = { lat: 37.424619838218376, lng: -122.17120617628098, id: 7, type: 'Open, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' };
 
+    //Restricted, charging spots
     var res_chg = [];
 
     res_chg[0] = { lat: 37.426892605309746, lng: -122.17151194810867, id: 1, type: 'Restricted, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' };
@@ -60,6 +61,25 @@
     res_chg[9] = { lat: 37.425716824387884, lng: -122.16451406478882, id: 10, type: 'Restricted, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' };
 
     res_chg[10] = { lat: 37.42318201647354, lng: -122.15507805347443, id: 11, type: 'Restricted, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' };
+    
+    //Open, no charging spots
+    var opn_chg = [];
+
+    opn_chg[0] = { lat: 37.431271800762374, lng: -122.17653572559357, id: 1, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[1] = { lat: 37.43031334116599, lng: -122.17740476131439, id: 2, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[2] = { lat: 37.429301620500645, lng: -122.1775496006012, id: 3, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[3] = { lat: 37.424690131018, lng: -122.1750283241272, id: 4, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[4] = { lat: 37.42401489139699, lng: -122.17447847127914, id: 5, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[5] = { lat: 37.41928804354492, lng: -122.16746985912323, id: 6, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[6] = { lat: 37.423322604706435, lng: -122.15689390897751, id: 7, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+
+    opn_chg[7] = { lat: 37.422909359754286, lng: -122.15515851974487, id: 8, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
 
     function close_all_infowin(arr) {
       for (var i = 0; i < arr.length; i++)
@@ -79,7 +99,7 @@
       var map = new google.maps.Map($map,
           mapOptions);
 
-      var coords = [].concat(res_no_chg, opn_no_chg, res_chg);
+      var coords = [].concat(res_no_chg, opn_no_chg, res_chg, opn_chg);
 
       //for (var i = 0; i < 10; i++) {
       //  coords[i] = new google.maps.LatLng(lat + 0.0001 * i, lng + 0.0001 * i);
@@ -98,9 +118,10 @@
           icon: coords[i].icon
         });
 
-        var content = "<h3>" + i + "<h3>" +
+        var content = "<h3>" + coords[i].type + " number " + coords[i].id + "</h3>" +
+            "<p>" + "[description]" + "</p>" +
             "<p>Lat: " + coords[i].lat + " Lng: " + coords[i].lng + "</p>"+
-            "<p>" + coords[i].type + " number " + coords[i].id + "</p>";
+            "<p>" + "[picture]" + "</p>";
         var infoWindow = new google.maps.InfoWindow({
           content: content
         });
