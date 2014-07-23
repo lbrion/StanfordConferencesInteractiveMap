@@ -13,7 +13,7 @@
     //Restricted, no charging spots
     var res_no_chg = [];
 
-    res_no_chg[0] = { lat: 37.42529294231708, lng: -122.17059195041656, id: 1, type: 'Restricted, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' };
+    res_no_chg[0] = { lat: 37.42529294231708, lng: -122.17059195041656, id: 1, type: 'Restricted, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', img: '../images/Golf Cart Station Pics/Old Union - Stanford Daily.jpg' };
 
     res_no_chg[1] = { lat: 37.425806286628806, lng: -122.16967731714249, id: 2, type: 'Restricted, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' };
 
@@ -121,7 +121,7 @@
         var content = "<h3>" + coords[i].type + " number " + coords[i].id + "</h3>" +
             "<p>" + "[description]" + "</p>" +
             "<p>Lat: " + coords[i].lat + " Lng: " + coords[i].lng + "</p>"+
-            "<p>" + "[picture]" + "</p>";
+            "<img class=\"thumb\" src=\"" + coords[i].img + "\">";
         var infoWindow = new google.maps.InfoWindow({
           content: content
         });

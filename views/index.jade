@@ -1,19 +1,195 @@
+html(xmlns='http://www.w3.org/1999/xhtml', xml:lang='en', lang='en')
 head
+  meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+  title Welcome to Stanford Conferences | Stanford Conferences
+  meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+  link(type='text/css', rel='stylesheet', media='all', href='http://web.stanford.edu/dept/rde/cgi-bin/drupal/conferences/sites/default/files/css/css_2d87967ecf76b4e4a1b7766e5edfe319.css')
+  script(type='text/javascript', src='http://web.stanford.edu/dept/rde/cgi-bin/drupal/conferences/sites/default/files/js/js_571b12cb6cb7eeb6f582fa4821b797c5.js')
   title= appTitle
   link(rel='stylesheet', href='/stylesheets/style.css')
-  link(rel='icon', href='/images/icon.png')
 
-body
-  div(class="sidebar")
-  div(class="content")
-    div(class="overlay")
-    div(class="map")
-  script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-  script(type='text/javascript', src='javascript/handlebars.js')
-  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB4NQtL9PBc0KOeCIY2n5rD0N4El6k09zw&sensor=false')
+body.sidebar-right
+    //
+       Layout 
+    #layout
+      #wrapper
+        #header
+          #block-block-15.block.block-block
+            .content
+              form#cse-search-box(action='http://www.stanford.edu/search')
+                .searchbox
+                  input(name='cx', type='hidden', value='003265255082301896483:sq5n7qoyfh8')
+                  input(name='cof', type='hidden', value='FORID:9')
+                  input(name='ie', type='hidden', value='UTF-8')
+                  input(name='q', type='text')
+                  input.form-submit(name='sa', type='submit', value='Search')
+          #logo
+            a(href='http://www.stanford.edu')
+              img(src='/dept/rde/cgi-bin/drupal/conferences/sites/all/themes/stanford/logo.png', alt='Stanford University')
+          #site
+            #name
+              a(href='/dept/rde/cgi-bin/drupal/conferences/', title='Stanford Conferences') Stanford Conferences
+          br.clear
+          br.clear
+        //
+           /#header 
+        #nav
+          ul.links.primary-links
+            li.menu-471.first
+              a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/lksc', title='Click here to visit the website for the Conference Center at LKSC') Visit LKSC Conferences
+            li.menu-473
+              a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/conference_planning', title='Click here to visit the website for Conferences at Stanford') Summer Conferences
+            li.menu-1559
+              a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/meeting_planning', title='') Meeting Planning Services
+            li.menu-857.last
+              a(href='/dept/rde/cgi-bin/drupal/conferences/contactus', title='Contact Us') Contact Us
+        //
+           /#nav 
+        #container
+          #top
+          #center
+            #upper
+            #node-159.node
+              div(class="interactive-map")
+                div(class="content")
+                  div(class="overlay" hidden="true")
+                  div(class="map")
+                  div(class="sidebar")
+                  button Toggle Restricted, no Charging
+                  button Toggle Open, no Charging
+                  button Toggle Restricted, Charging
+                  button Toggle Open, Charging
+                  button Toggle Check-In Locations
+                  button Toggle Check-Out Locations
+                  button Toggle Meeting Spaces
+                script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+                script(type='text/javascript', src='javascript/handlebars.js')
+                script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB4NQtL9PBc0KOeCIY2n5rD0N4El6k09zw&sensor=false')
 
-  // Views 
-  script(type='text/javascript', src='javascript/main-view.js')
-  script(type='text/javascript', src='javascript/google-map-view.js')
-  // Main 
-  script(type='text/javascript', src='javascript/main.js')
+          //
+             /#center 
+          #sidebar-right.sidebar
+            #block-block-39.block.block-block
+              .content
+                .rtecenter
+                  a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/')
+                    img(alt='Stanford Conferences Logo', src='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/sites/default/files/SC_logo.gif')
+            #block-menu-menu-execconferences.block.block-menu
+              h2 Executive Conferences Information
+              .content
+                ul.menu
+                  li.leaf.first.even
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/ataglance', title='Executive Conferences & Events At-A-Glance') Pricing & Floor Plans
+                  li.leaf.odd
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/lksc', title='Visit the website for the The Conference Center at LKSC') The Conference Center at LKSC
+                  li.leaf.even
+                    a(href='http://www.stanford.edu/dept/rde/lkscform.fb', title='Inquiry form for conferences') Request Info
+                  li.leaf.last.odd
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/inthenews', title='') In the News
+            #block-menu-menu-summer-conferences.block.block-menu
+              h2 Residential Summer Conferences
+              .content
+                ul.menu
+                  li.leaf.first.even
+                    a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/conference_planning', title='') Planning Summer Conferences
+                  li.leaf.last.odd
+                    a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/youth_camps', title='') Planning Youth Camps
+            #block-menu-menu-summerconferences.block.block-menu
+              h2 Meeting Planning Services
+              .content
+                ul.menu
+                  li.leaf.first.even
+                    a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/meeting_planning', title='Meeting Planner Services') Meeting Planning Services
+                  li.leaf.last.odd
+                    a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/registration_services', title='Registration Services') Registration Services
+            #block-menu-menu-rde.block.block-menu
+              h2 Residential & Dining Enterprises
+              .content
+                ul.menu
+                  li.leaf.first.even
+                    a(href='http://rde.stanford.edu', title='Shirley Everett, Senior Associate Vice Provost for R&DE') Office of the Senior Associate Vice Provost for R&DE
+                  li.leaf.odd
+                    a(href='http://housing.stanford.edu', title='Student Housing') Student Housing
+                  li.leaf.even
+                    a(href='http://dining.stanford.edu', title='Stanford Dining') Stanford Dining
+                  li.leaf.odd
+                    a(href='http://hospitality.stanford.edu', title='Stanford Hospitality & Auxiliaries') Stanford Hospitality & Auxiliaries
+                  li.leaf.last.even
+                    a(href='http://conferences.stanford.edu/', title='Stanford Conferences') Stanford Conferences
+            #block-menu-menu-bsa-menu.block.block-menu
+              h2 Business Support & Assessment
+              .content
+                ul.menu
+                  li.leaf.first.odd
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/bsa-purpose', title='') Our Purpose
+                  li.leaf.even
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/bsa-services', title='') Services
+                  li.leaf.odd
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/bsa-portfolio', title='') Portfolio
+                  li.leaf.last.even
+                    a(href='/dept/rde/cgi-bin/drupal/conferences/bsa-contact', title='') Contact BSA
+            #block-block-41.block.block-block
+              .content
+                p
+                  img(height='63', src='http://www.stanford.edu/dept/rde/images/logos/sbp_partner2.jpg', width='116')
+            #block-block-5.block.block-block
+              .content
+                //
+                   AddThis Button BEGIN 
+                //
+                   AddThis Button BEGIN 
+                .addthis_toolbox.addthis_default_style.addthis_32x32_style
+                  a.addthis_button_preferred_1
+                  a.addthis_button_preferred_2
+                  a.addthis_button_preferred_3
+                  a.addthis_button_preferred_4
+                script(type='text/javascript', src='http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d645496283f4e8c')
+                //
+                   AddThis Button END 
+                //
+                   AddThis Button END 
+            #block-block-9.block.block-block
+              .content
+                p
+                  a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/conferences/sitemap') Site Map
+          //
+             /#sidebar-right 
+          br.clear
+          #bottom
+          #footer.clear
+            #block-block-7.block.block-block
+              .content
+                table#menu(border='0', cellpadding='5', cellspacing='0', width='100%')
+                  tbody
+                    tr
+                      td.rteleft(style='white-space: nowrap; vertical-align: top;')
+                        | 2012 Residential & Dining Enterprises
+                        br
+                        | All Rights Reserved
+                      td(style='white-space: nowrap; text-align: center; vertical-align: middle;')
+                        a(href='http://www.stanford.edu/dept/rde/cgi-bin/drupal/rde/contact-us', target='_blank', title='Contact Us') Contact Us
+                      td.rteright(style='white-space: nowrap; vertical-align: middle; text-align: right;')
+                        a(href='http://www.stanford.edu/', target='_blank', title='Stanford University') Stanford University
+            #block-node-0.block.block-node
+              h2 Syndicate
+              .content
+                a.feed-icon(href='/dept/rde/cgi-bin/drupal/conferences/rss.xml')
+                  img(src='/dept/rde/cgi-bin/drupal/conferences/misc/feed.png', alt='Syndicate content', title='Syndicate', width='16', height='16')
+          //
+             /#footer 
+          #copyright.vcard   
+          //
+             /#copyright 
+        //
+           /#container 
+        br.clear
+      //
+         /#wrapper 
+    //
+       /layout 
+
+    // Views 
+    script(type='text/javascript', src='javascript/main-view.js')
+    script(type='text/javascript', src='javascript/google-map-view.js')
+    // Main 
+    script(type='text/javascript', src='javascript/main.js')
