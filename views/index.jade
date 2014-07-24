@@ -4,7 +4,10 @@ head
   link(rel='icon', href='/images/icon.png')
 
 body
-  div(class="sidebar")
+  div(class="content")
+    div(class="overlay" hidden="true")
+    div(class="map")
+    div(class="sidebar")
     button Toggle Restricted, no Charging
     button Toggle Open, no Charging
     button Toggle Restricted, Charging
@@ -12,9 +15,6 @@ body
     button Toggle Check-In Locations
     button Toggle Check-Out Locations
     button Toggle Meeting Spaces
-  div(class="content")
-    div(class="overlay" hidden="true")
-    div(class="map")
   script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
   script(type='text/javascript', src='javascript/handlebars.js')
   script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB4NQtL9PBc0KOeCIY2n5rD0N4El6k09zw&sensor=false')

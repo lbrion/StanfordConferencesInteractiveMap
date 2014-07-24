@@ -65,11 +65,11 @@
     //Open, no charging spots
     var opn_chg = [];
 
-    opn_chg[0] = { lat: 37.431271800762374, lng: -122.17653572559357, id: 1, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    opn_chg[0] = { lat: 37.431271800762374, lng: -122.17653572559357, id: 1, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', img: '../images/Golf Cart Station Pics/LKS-Beckman Parking Lot.bmp' };
 
-    opn_chg[1] = { lat: 37.43031334116599, lng: -122.17740476131439, id: 2, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    opn_chg[1] = { lat: 37.43031334116599, lng: -122.17740476131439, id: 2, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', img: '../images/Golf Cart Station Pics/Juniper Hall.bmp' };
 
-    opn_chg[2] = { lat: 37.429301620500645, lng: -122.1775496006012, id: 3, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    opn_chg[2] = { lat: 37.429301620500645, lng: -122.1775496006012, id: 3, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', img: '../images/Golf Cart Station Pics/Pine Hall.bmp' };
 
     opn_chg[3] = { lat: 37.424690131018, lng: -122.1750283241272, id: 4, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
 
@@ -81,33 +81,16 @@
 
     opn_chg[7] = { lat: 37.422909359754286, lng: -122.15515851974487, id: 8, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
 
-    function close_all_infowin(arr) {
-      for (var i = 0; i < arr.length; i++)
-        if (arr[i].getContent())
-          arr[i].close();
+    function close_all_infowin(arr  ) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr[i].length; j++) {
+          if (arr[i][j].getContent())
+            arr[i][j].close();
+        }
+      }
     }
 
-    var lat = 37.4272386;
-    var lng = -122.1698012;
-
-    function initialize() {
-      var myLatlng = new google.maps.LatLng(lat, lng);
-      var mapOptions = {
-        center: myLatlng,
-        zoom: DEFAULT_ZOOM
-      };
-      var map = new google.maps.Map($map,
-          mapOptions);
-
-      var coords = [].concat(res_no_chg, opn_no_chg, res_chg, opn_chg);
-
-      //for (var i = 0; i < 10; i++) {
-      //  coords[i] = new google.maps.LatLng(lat + 0.0001 * i, lng + 0.0001 * i);
-      //}
-
-      var markers = Array();
-      var infoWindows = Array();
-
+    function display_markers(coords, map, markers, infoWindows, master) {
       for (var i = 0; i < coords.length; i++) {
         var myLatlng = new google.maps.LatLng(coords[i].lat, coords[i].lng);
         var marker = new google.maps.Marker({
@@ -120,7 +103,7 @@
 
         var content = "<h3>" + coords[i].type + " number " + coords[i].id + "</h3>" +
             "<p>" + "[description]" + "</p>" +
-            "<p>Lat: " + coords[i].lat + " Lng: " + coords[i].lng + "</p>"+
+            "<p>Lat: " + coords[i].lat + " Lng: " + coords[i].lng + "</p>" +
             "<img class=\"thumb\" src=\"" + coords[i].img + "\">";
         var infoWindow = new google.maps.InfoWindow({
           content: content
@@ -129,15 +112,43 @@
         google.maps.event.addListener(marker, 'click',
             function (event) {
               map.panTo(event.latLng);
-              close_all_infowin(infoWindows);
+              close_all_infowin(master);
               infoWindows[this.marker].open(map, this);
             }
         );
 
         infoWindows.push(infoWindow);
-        console.log(infoWindows[i]);
+        console.log(infoWindow);
         markers.push(marker);
       }
+
+      console.log(infoWindows);
+    }
+
+    //Stanford Coordinates
+    var lat = 37.4272386;
+    var lng = -122.1698012;
+
+    function initialize() {
+      var myLatlng = new google.maps.LatLng(lat, lng);
+      var mapOptions = {
+        center: myLatlng,
+        zoom: DEFAULT_ZOOM
+      };
+      var map = new google.maps.Map($map,
+          mapOptions);
+
+      var markers = Array();
+      var infoWindows = Array();
+
+      infoWindows[0] = Array();
+      display_markers(res_no_chg, map, markers, infoWindows[0], infoWindows);
+      infoWindows[1] = Array();
+      display_markers(opn_no_chg, map, markers, infoWindows[1], infoWindows);
+      infoWindows[2] = Array();
+      display_markers(res_chg, map, markers, infoWindows[2], infoWindows);
+      infoWindows[3] = Array();
+      display_markers(opn_chg, map, markers, infoWindows[3], infoWindows);
 
       google.maps.event.addListener(map, 'click', function (event) {
 
