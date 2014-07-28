@@ -76,10 +76,16 @@
     opn_chg[4] = { lat: 37.42401489139699, lng: -122.17447847127914, id: 5, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
 
     opn_chg[5] = { lat: 37.41928804354492, lng: -122.16746985912323, id: 6, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    //Image may be wrong
+    opn_chg[6] = { lat: 37.423322604706435, lng: -122.15689390897751, id: 7, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', img: '../images/Golf Cart Station Pics/EV - Comstock Circle (Behind Maintenance Ctr.).jpg' };
+    //Image may be wrong
+    opn_chg[7] = { lat: 37.422909359754286, lng: -122.15515851974487, id: 8, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', img: '../images/Golf Cart Station Pics/EV - Behind Front Desk Office.jpg' };
 
-    opn_chg[6] = { lat: 37.423322604706435, lng: -122.15689390897751, id: 7, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    //Unknown type spots
 
-    opn_chg[7] = { lat: 37.422909359754286, lng: -122.15515851974487, id: 8, type: 'Open, charging', icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+    var unk_chg = [];
+
+    unk_chg[0] = { lat: 37.421042273590004, lng: -122.16854810714722, id: 1, type: 'Unknown', icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png', img: '../images/Golf Cart Station Pics/Lasuen.jpg' };
 
     function close_all_infowin(arr  ) {
       for (var i = 0; i < arr.length; i++) {
@@ -129,6 +135,9 @@
     var lat = 37.4272386;
     var lng = -122.1698012;
 
+    var markers = Array();
+    var infoWindows = Array();
+
     function initialize() {
       var myLatlng = new google.maps.LatLng(lat, lng);
       var mapOptions = {
@@ -138,8 +147,7 @@
       var map = new google.maps.Map($map,
           mapOptions);
 
-      var markers = Array();
-      var infoWindows = Array();
+
 
       infoWindows[0] = Array();
       display_markers(res_no_chg, map, markers, infoWindows[0], infoWindows);
@@ -149,6 +157,8 @@
       display_markers(res_chg, map, markers, infoWindows[2], infoWindows);
       infoWindows[3] = Array();
       display_markers(opn_chg, map, markers, infoWindows[3], infoWindows);
+      infoWindows[4] = Array();
+      display_markers(unk_chg, map, markers, infoWindows[4], infoWindows);
 
       google.maps.event.addListener(map, 'click', function (event) {
 
