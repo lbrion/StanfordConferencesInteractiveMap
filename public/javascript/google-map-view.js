@@ -166,6 +166,17 @@
         console.log("lat: " + event.latLng.lat());
         console.log("lng: " + event.latLng.lng());
       });
+
+      var firebase = new Firebase("https://burning-fire-7936.firebaseio.com/map");
+
+      firebase.on('value', function (snapshot) {
+        console.log(snapshot.val());
+      }, function (errorObject) {
+        console.log('The read failed: ' + errorObject.code);
+      });
+
+      firebase.set('test');
+      firebase.set('test2');
     }
 
     initialize();
