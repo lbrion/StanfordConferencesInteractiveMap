@@ -9,7 +9,7 @@
   GoogleMapView.render = function($map) {
 
     // Creating all of the golf cart spots.
-    /*
+    
     //Restricted, no charging spots
     var res_no_chg = [];
 
@@ -86,7 +86,11 @@
     var unk_chg = [];
 
     unk_chg[0] = { lat: 37.421042273590004, lng: -122.16854810714722, id: 1, type: 'Unknown', icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png', img: '../images/Golf Cart Station Pics/Lasuen.jpg' };
-    */
+    
+    var temp = [].concat(res_no_chg, opn_no_chg, res_chg, opn_chg, unk_chg);
+
+    console.log(temp);
+
     function close_all_infowin(arr) {
       for (var i = 0; i < arr.length; i++) {
         arr[i].close();
@@ -161,16 +165,19 @@
       var firebase = new Firebase("https://burning-fire-7936.firebaseio.com/map");
 
       firebase.on('value', function (snapshot) {
-        var test = snapshot.val();
-        var test2 = JSON.parse(snapshot.val());
-        coords[0] = JSON.parse(snapshot.val());
+        snapshot.forEach(function (childSnapshot) {
+          var temp = JSON.parse(childSnapshot.val());
+          temp["fbloc"] = childSnapshot.ref();
+          coords.push(temp);
+          console.log(temp);
+        });
         display_markers(coords, map, markers, infoWindows, infoWindows);
       }, function (errorObject) {
         console.log('The read failed: ' + errorObject.code);
       });
 
-      firebase.set(JSON.stringify({ lat: 37.42529294231708, lng: -122.17059195041656, id: 1, type: 'Restricted, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', img: '../images/Golf Cart Station Pics/Old Union - Stanford Daily.jpg' }));
-
+      firebase.child("temp").set(JSON.stringify({}));
+      
       console.log(coords[0]);
 
       google.maps.event.addListener(map, 'click', function (event) {
