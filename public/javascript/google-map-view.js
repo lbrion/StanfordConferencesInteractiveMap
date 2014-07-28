@@ -9,7 +9,7 @@
   GoogleMapView.render = function($map) {
 
     // Creating all of the golf cart spots.
-
+    /*
     //Restricted, no charging spots
     var res_no_chg = [];
 
@@ -86,13 +86,10 @@
     var unk_chg = [];
 
     unk_chg[0] = { lat: 37.421042273590004, lng: -122.16854810714722, id: 1, type: 'Unknown', icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png', img: '../images/Golf Cart Station Pics/Lasuen.jpg' };
-
-    function close_all_infowin(arr  ) {
+    */
+    function close_all_infowin(arr) {
       for (var i = 0; i < arr.length; i++) {
-        for (var j = 0; j < arr[i].length; j++) {
-          if (arr[i][j].getContent())
-            arr[i][j].close();
-        }
+        arr[i].close();
       }
     }
 
@@ -135,6 +132,7 @@
     var lat = 37.4272386;
     var lng = -122.1698012;
 
+    var coords = [];
     var markers = Array();
     var infoWindows = Array();
 
@@ -148,7 +146,7 @@
           mapOptions);
 
 
-
+      /*
       infoWindows[0] = Array();
       display_markers(res_no_chg, map, markers, infoWindows[0], infoWindows);
       infoWindows[1] = Array();
@@ -159,6 +157,21 @@
       display_markers(opn_chg, map, markers, infoWindows[3], infoWindows);
       infoWindows[4] = Array();
       display_markers(unk_chg, map, markers, infoWindows[4], infoWindows);
+      */
+      var firebase = new Firebase("https://burning-fire-7936.firebaseio.com/map");
+
+      firebase.on('value', function (snapshot) {
+        var test = snapshot.val();
+        var test2 = JSON.parse(snapshot.val());
+        coords[0] = JSON.parse(snapshot.val());
+        display_markers(coords, map, markers, infoWindows, infoWindows);
+      }, function (errorObject) {
+        console.log('The read failed: ' + errorObject.code);
+      });
+
+      firebase.set(JSON.stringify({ lat: 37.42529294231708, lng: -122.17059195041656, id: 1, type: 'Restricted, no charging', icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', img: '../images/Golf Cart Station Pics/Old Union - Stanford Daily.jpg' }));
+
+      console.log(coords[0]);
 
       google.maps.event.addListener(map, 'click', function (event) {
 
@@ -166,17 +179,6 @@
         console.log("lat: " + event.latLng.lat());
         console.log("lng: " + event.latLng.lng());
       });
-
-      var firebase = new Firebase("https://burning-fire-7936.firebaseio.com/map");
-
-      firebase.on('value', function (snapshot) {
-        console.log(snapshot.val());
-      }, function (errorObject) {
-        console.log('The read failed: ' + errorObject.code);
-      });
-
-      firebase.set('test');
-      firebase.set('test2');
     }
 
     initialize();
