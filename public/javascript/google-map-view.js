@@ -9,7 +9,7 @@
   GoogleMapView.render = function($map) {
 
     // Creating all of the golf cart spots.
-    
+    /*
     //Restricted, no charging spots
     var res_no_chg = [];
 
@@ -90,7 +90,7 @@
     var temp = [].concat(res_no_chg, opn_no_chg, res_chg, opn_chg, unk_chg);
 
     console.log(temp);
-
+    */
     function close_all_infowin(arr) {
       for (var i = 0; i < arr.length; i++) {
         arr[i].close();
@@ -176,7 +176,7 @@
         console.log('The read failed: ' + errorObject.code);
       });
 
-      firebase.child("temp").set(JSON.stringify({}));
+      //firebase.child("temp").set(JSON.stringify({}));
       
       console.log(coords[0]);
 
